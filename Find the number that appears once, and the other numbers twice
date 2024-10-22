@@ -1,0 +1,32 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class Solution {
+    public static int getSingleElement(int []arr){
+
+        // Write your code here.
+        Map<Integer,Integer> sing = new HashMap<>();
+        for(int i=0;i<arr.length;i++){
+            if(sing.containsKey(arr[i])){
+                sing.put(arr[i],sing.get(arr[i])+1);
+            }
+            else{
+                sing.put(arr[i], 1);
+            }
+        }
+        int v=0;
+        for(Map.Entry<Integer,Integer> entry: sing.entrySet()){
+            int count = entry.getValue();
+            int ele = entry.getKey();
+            if(count == 1){
+                v = ele;
+            }
+        } 
+        return v;
+    }
+    public static void main(String[] args){
+        int arr[] = {1,1,2,3,3,4,4};
+        int v = Solution.getSingleElement(arr);
+        System.out.println(v);
+    }
+}
