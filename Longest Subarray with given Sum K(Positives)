@@ -1,0 +1,26 @@
+public class Solution {
+    public static int longestSubarrayWithSumK(int []a, long k) {
+        // Write your code here
+        int n = a.length;
+        int len = 0;
+        for(int i=0;i<n;i++){
+            for(int j=i;j<n;j++){
+                
+                long s = 0;
+                for(int m=i;m<=j;m++){
+                    s += a[m];
+                }
+                if(s==k){
+                    len = Math.max(len, j-i+1);
+                }
+            }
+        }
+        return len;
+    }
+    public static void main(String[] args){
+        int arr[] = {1,2,3,1,1,1,1};
+        int k = 3;
+        int len = longestSubarrayWithSumK(arr,k);
+        System.out.println("The length of longrst sub array is :" + len);
+    }
+}
